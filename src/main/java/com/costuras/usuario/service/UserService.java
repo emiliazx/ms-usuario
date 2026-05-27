@@ -28,7 +28,7 @@ public class UserService {
 
 
 
-    // Listar todas las direcciones del usuario autenticado
+   
     public List<DireccionesResponse> getDirecciones(Integer userId) {
         return direccionRepository.findByUserId(userId)
                 .stream()
@@ -41,7 +41,7 @@ public class UserService {
                 .toList();
     }
 
-    // Agregar dirección al usuario autenticado
+    
     public DireccionesResponse addDireccion(AddDireccionesRequest request, Integer userId) {
         Direccion direccion = Direccion.builder()
                 .userId(userId)
@@ -60,7 +60,7 @@ public class UserService {
                 .build();
     }
 
-    // Actualizar dirección existente
+  
   public DireccionesResponse updateDireccion(Integer id, AddDireccionesRequest request, Integer userId) {
     Direccion direccion = direccionRepository.findById(id)
             .orElseThrow(() -> new DireccionNotFoundException(id));
@@ -81,7 +81,7 @@ public class UserService {
             .comuna(direccion.getComuna())
             .build();
 }
-//valida eliminacion
+
 public void deleteDireccion(Integer id) {
     if (!direccionRepository.existsById(id)) {
         throw new DireccionNotFoundException(id);
